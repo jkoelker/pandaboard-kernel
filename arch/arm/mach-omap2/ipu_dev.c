@@ -46,7 +46,7 @@ static void print_hwmod_state(struct omap_hwmod *oh, char *desc)
 {
 	u32 _state = (u32) oh->_state;
 	pr_debug("HWMOD name = %s\n", oh->name);
-	if (_state > _HWMOD_STATE_LAST)
+	if (_state > ARRAY_SIZE(hwmod_state_strings))
 		WARN(1, "Illegal hwmod _state = %d\n", _state);
 	else
 		pr_debug("%s state = %s\n", desc, hwmod_state_strings[_state]);
