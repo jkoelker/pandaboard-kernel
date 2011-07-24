@@ -22,6 +22,7 @@
 #include <linux/platform_device.h>
 #include <plat/remoteproc.h>
 
+#include <plat/common.h>
 #include <plat/ipu_dev.h>
 
 #include "../../../drivers/dsp/syslink/ipu_pm/ipu_pm.h"
