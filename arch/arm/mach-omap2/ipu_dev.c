@@ -86,6 +86,9 @@ inline int ipu_pm_module_stop(unsigned rsrc)
 }
 EXPORT_SYMBOL(ipu_pm_module_stop);
 
+/* uplevel hack */
+exten int omap_device_set_rate(struct device *dev, unsigned long freq);
+
 inline int ipu_pm_module_set_rate(unsigned rsrc,
 				  unsigned target_rsrc,
 				  unsigned rate)
