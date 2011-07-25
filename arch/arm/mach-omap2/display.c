@@ -116,10 +116,11 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 		return -ENODEV;
 	}
 
+#ifndef CONFIG_OMAP4_USE_OLD_API_VIDEO
 	pdata.board_data = board_data;
 	pdata.board_data->get_last_off_on_transaction_id = NULL;
 	pdata.opt_clock_available = opt_clock_available;
-
+#endif
 	for (i = 0; i < oh_count; i++) {
 		oh = omap_hwmod_lookup(curr_dss_hwmod[i].oh_name);
 		if (!oh) {
@@ -127,6 +128,16 @@ int __init omap_display_init(struct omap_dss_board_info *board_data)
 				curr_dss_hwmod[i].oh_name);
 			return -ENODEV;
 		}
+
+#ifdef CONFIG_OMAP4_USE_OLD_API_VIDEO
+               strcpy(pdata.name, oh_name[i]);
+               pdata.hwmod_count       = 2;
+               pdata.board_data        = board_data;
+               pdata.board_data->get_last_off_on_transaction_id = NULL;
+               pdata.device_enable     = omap_device_enable;
+               pdata.device_idle       = omap_device_idle;
+               pdata.device_shutdown   = omap_device_shutdown;
+#endif
 
 		od = omap_device_build(curr_dss_hwmod[i].dev_name,
 				curr_dss_hwmod[i].id, oh, &pdata,
