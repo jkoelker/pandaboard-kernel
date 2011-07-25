@@ -101,6 +101,10 @@ enum omap_color_mode {
 	OMAP_DSS_COLOR_RGBX16		= 1 << 16, /* RGBx16 - 4444 */
 	OMAP_DSS_COLOR_ARGB16_1555	= 1 << 17, /* ARGB16 - 1555 */
 	OMAP_DSS_COLOR_XRGB16_1555	= 1 << 18, /* xRGB16 - 1555 */
+	OMAP_DSS_COLOR_RGBA12		= 1 << 19, /* RGBA12 - 4444 */
+	OMAP_DSS_COLOR_XRGB12		= 1 << 20, /* xRGB12, 16-bit container */
+	OMAP_DSS_COLOR_RGBX24_32_ALGN   = 1 << 21, /* 32-msb aligned 24bit */
+	OMAP_DSS_COLOR_XRGB15		= 1 << 22, /* xRGB15: 1555*/
 
 	OMAP_DSS_COLOR_GFX_OMAP2 =
 		OMAP_DSS_COLOR_CLUT1 | OMAP_DSS_COLOR_CLUT2 |
@@ -857,12 +861,12 @@ int omapdss_display_enable(struct omap_dss_device *dssdev);
 void omapdss_display_disable(struct omap_dss_device *dssdev);
 
 #ifndef CONFIG_OMAP4_USE_OLD_API_VIDEO
- void omapdss_dsi_vc_enable_hs(int channel, bool enable);
-#else
- void omapdss_dsi_vc_enable_hs(struct omap_dss_device *dssdev, int channel,
+void omapdss_dsi_vc_enable_hs(struct omap_dss_device *dssdev, int channel,
 		bool enable);
+#else
+void omapdss_dsi_vc_enable_hs(enum omap_dsi_index ix, int channel,
+			bool enable);
 #endif
-
 int omapdss_dsi_enable_te(struct omap_dss_device *dssdev, bool enable);
 
 int omap_dsi_prepare_update(struct omap_dss_device *dssdev,
