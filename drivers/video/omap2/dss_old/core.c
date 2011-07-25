@@ -192,15 +192,15 @@ static int dss_get_clocks(void)
 	core.dss_96m_fck = NULL;
 
 	if (cpu_is_omap44xx()) {
-		r = dss_get_clock(&core.dss_ick, "sys_clk");
+		r = dss_get_clock(&core.dss_ick, "ick");
 		if (r)
 			goto err;
 
-		r = dss_get_clock(&core.dss1_fck, "dss_clk"); // ick ? jassi
+		r = dss_get_clock(&core.dss1_fck, "fck");
 		if (r)
 			goto err;
 
-		r = dss_get_clock(&core.dss2_fck, "dss_clk"); // fck ? jassi
+		r = dss_get_clock(&core.dss2_fck, "sys_clk");
 		if (r)
 			goto err;
 
