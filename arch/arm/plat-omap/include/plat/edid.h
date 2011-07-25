@@ -3,7 +3,7 @@
  *
  * Copyright (C) 2009 Texas Instruments
  * Author: Mythri P K <mythripk@ti.com>
- *		with some of the ENUM's and structure derived from Yong Zhi's
+ * 		with some of the ENUM's and structure derived from Yong Zhi's
  *		hdmi.h(Now obsolete)
  *
  * EDID.c to read the EDID content , given the 256 Bytes EDID.
@@ -20,10 +20,13 @@
  * You should have received a copy of the GNU General Public License along with
  * this program.  If not, see <http://www.gnu.org/licenses/>.
  * History:
+ *
  */
 
 #ifndef _EDID_H_
 #define _EDID_H_
+
+#include <plat/display.h>
 
 /* HDMI EDID Extension Data Block Tags  */
 #define HDMI_EDID_EX_DATABLOCK_TAG_MASK		0xE0
@@ -263,6 +266,19 @@ struct HDMI_EDID {
 
 	u8	ext_datablock[256];
 } __packed;
+
+int get_edid_timing_info(union HDMI_EDID_DTD *edid_dtd,
+			struct omap_video_timings *timings);
+void get_eedid_timing_info(int current_descriptor_addrs, u8 *edid ,
+			struct omap_video_timings *timings);
+int hdmi_get_datablock_offset(u8 *edid, enum extension_edid_db datablock, int *offset);
+int hdmi_get_image_format(u8 *edid, struct image_format *format);
+int hdmi_get_audio_format(u8 *edid, struct audio_format *format);
+void hdmi_get_av_delay(u8 *edid, struct latency *lat);
+void hdmi_deep_color_support_info(u8 *edid, struct deep_color *format);
+int hdmi_tv_yuv_supported(u8 *edid);
+
+extern const struct omap_video_timings all_timings_direct[OMAP_HDMI_TIMINGS_NB];
 
 #ifdef __cplusplus
 };
