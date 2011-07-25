@@ -2231,7 +2231,6 @@ static struct omap_hwmod_addr_space omap44xx_gpu_addrs[] = {
 		.flags		= ADDR_TYPE_RT
 	},
 };
-
 /* l4_cfg -> hsi */
 static struct omap_hwmod_ocp_if omap44xx_l4_cfg__hsi = {
 	.master		= &omap44xx_l4_cfg_hwmod,
@@ -2402,7 +2401,7 @@ static struct omap_hwmod omap44xx_fdif_hwmod = {
 	.slaves_cnt	= ARRAY_SIZE(omap44xx_fdif_slaves),
 	.masters	= omap44xx_fdif_masters,
 	.masters_cnt	= ARRAY_SIZE(omap44xx_fdif_masters),
-	.omap_chip	= OMAP_CHIP_INIT(CHIP_IS_OMAP4430),
+	.omap_chip	= OMAP_CHIP_INIT(CHIP_IS_OMAP44XX),
 };
 
 
@@ -5351,7 +5350,7 @@ static struct omap_hwmod omap44xx_sl2if_hwmod = {
 	},
 	.slaves		= omap44xx_sl2if_slaves,
 	.slaves_cnt	= ARRAY_SIZE(omap44xx_sl2if_slaves),
-	.omap_chip	= OMAP_CHIP_INIT(CHIP_IS_OMAP4430),
+	.omap_chip	= OMAP_CHIP_INIT(CHIP_IS_OMAP44XX),
 };
 
 static __initdata struct omap_hwmod *omap44xx_hwmods[] = {
