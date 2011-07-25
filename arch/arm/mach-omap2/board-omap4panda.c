@@ -599,7 +599,9 @@ static struct omap_dss_device  omap4_panda_hdmi_device = {
 
 static struct omap_dss_device *omap4_panda_dss_devices[] = {
 	&omap4_panda_hdmi_device,
-	&omap4_panda_dvi_device,
+#ifndef CONFIG_OMAP4_USE_OLD_API_VIDEO
+        &omap4_panda_dvi_device,
+#endif
 };
 
 static struct omap_dss_board_info omap4_panda_dss_data = {
