@@ -44,7 +44,7 @@
 #include <asm/processor.h>
 #include <plat/dma.h>
 #include <plat/vram.h>
-#include <plat/display.h>
+#include <video/omapdss.h>
 
 #include "omap_wbdef.h"
 #include "omap_voutlib.h"

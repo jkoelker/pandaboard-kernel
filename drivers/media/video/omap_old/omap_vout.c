@@ -47,7 +47,7 @@
 #include <plat/dma.h>
 #include <plat/vram.h>
 #include <plat/vrfb.h>
-#include <plat/display.h>
+#include <video/omapdss.h>
 #include <plat/cpu.h>
 #ifdef CONFIG_PM
 #include <plat/omap-pm.h>

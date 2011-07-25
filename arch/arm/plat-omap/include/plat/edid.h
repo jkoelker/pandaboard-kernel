@@ -26,7 +26,7 @@
 #ifndef _EDID_H_
 #define _EDID_H_
 
-#include <plat/display.h>
+#include <video/omapdss.h>
 
 /* HDMI EDID Extension Data Block Tags  */
 #define HDMI_EDID_EX_DATABLOCK_TAG_MASK		0xE0

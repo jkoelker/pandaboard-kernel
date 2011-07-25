@@ -8,7 +8,7 @@
  * kind, whether express or implied.
  */
 
-#include <plat/display.h>
+#include <video/omapdss.h>
 #include <linux/videodev2.h>
 
 #define YUYV_BPP        2

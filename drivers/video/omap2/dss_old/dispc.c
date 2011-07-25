@@ -36,7 +36,7 @@
 #include <plat/sram.h>
 #include <plat/clock.h>
 
-#include <plat/display.h>
+#include <video/omapdss.h>
 
 #include "dss.h"
 #include <mach/tiler_old.h>

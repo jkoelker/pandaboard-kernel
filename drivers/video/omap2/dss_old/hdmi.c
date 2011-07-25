@@ -38,7 +38,7 @@
 #include <linux/delay.h>
 #include <linux/string.h>
 #include <linux/platform_device.h>
-#include <plat/display.h>
+#include <video/omapdss.h>
 #include <plat/cpu.h>
 #include <plat/hdmi_lib.h>
 #include <plat/gpio.h>

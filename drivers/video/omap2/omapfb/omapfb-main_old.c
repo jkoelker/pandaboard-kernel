@@ -31,7 +31,7 @@
 #include <linux/omapfb.h>
 #include <linux/console.h>
 
-#include <plat/display.h>
+#include <video/omapdss.h>
 #include <plat/vram.h>
 #include <plat/vrfb.h>
 #include <mach/tiler_old.h>

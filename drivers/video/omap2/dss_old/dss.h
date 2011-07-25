@@ -20,7 +20,7 @@
  * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <plat/display.h>
+#include <video/omapdss.h>
 #ifndef __OMAP2_DSS_H
 #define __OMAP2_DSS_H
 

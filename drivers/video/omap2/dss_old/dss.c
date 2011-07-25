@@ -31,7 +31,7 @@
 #include <linux/clk.h>
 #include <linux/pm_runtime.h>
 
-#include <plat/display.h>
+#include <video/omapdss.h>
 #include "dss.h"
 
 #ifndef CONFIG_ARCH_OMAP4

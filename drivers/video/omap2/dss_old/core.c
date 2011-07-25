@@ -34,7 +34,7 @@
 #include <linux/regulator/consumer.h>
 #include <linux/pm_runtime.h>
 
-#include <plat/display.h>
+#include <video/omapdss.h>
 #include <plat/clock.h>
 
 #include "dss.h"
