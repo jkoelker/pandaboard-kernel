@@ -1426,7 +1426,7 @@ int hdmi_min_enable(void)
 	return 0;
 }
 
-static spinlock_t irqstatus_lock = SPIN_LOCK_UNLOCKED;
+static spinlock_t irqstatus_lock = __SPIN_LOCK_UNLOCKED(irqstatus_lock);
 static volatile int irqstatus;
 
 void hdmi_work_queue(struct work_struct *work)

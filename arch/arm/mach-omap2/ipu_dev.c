@@ -25,7 +25,12 @@
 #include <plat/common.h>
 #include <plat/ipu_dev.h>
 
+#ifndef CONFIG_OMAP4_USE_OLD_API_VIDEO
 #include "../../../drivers/dsp/syslink/ipu_pm/ipu_pm.h"
+#else
+#include "../../../drivers/dsp/syslink_old/ipu_pm/ipu_pm.h"
+#endif
+
 
 #define IPU_DRIVER_NAME "omap-ipu-pm"
 #define ISS_IPU_BUS_ID 0
@@ -86,14 +91,11 @@ inline int ipu_pm_module_stop(unsigned rsrc)
 }
 EXPORT_SYMBOL(ipu_pm_module_stop);
 
-/* uplevel hack */
-exten int omap_device_set_rate(struct device *dev, unsigned long freq);
-
 inline int ipu_pm_module_set_rate(unsigned rsrc,
 				  unsigned target_rsrc,
 				  unsigned rate)
 {
-	int ret;
+	int ret = 0;
 	unsigned target;
 	struct device *dp;
 	struct omap_ipupm_mod_platform_data *pd;
@@ -119,7 +121,9 @@ inline int ipu_pm_module_set_rate(unsigned rsrc,
 			dp = pd[target].dev;
 	}
 
-	ret = omap_device_set_rate(/*pd[rsrc].dev,*/ dp, rate);
+#ifdef CONFIG_OMAP_PM
+	ret = omap_device_set_rate(dp, rate);
+#endif
 	if (ret)
 		pr_err("device set rate failed %s", pd[target_rsrc].oh_name);
 err_ret:

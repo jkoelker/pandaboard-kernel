@@ -27,7 +27,11 @@
 #include <linux/ioctl.h>
 #include <linux/cdev.h>
 
+#ifndef CONFIG_OMAP4_USE_OLD_API_VIDEO
 #include "../../../drivers/dsp/syslink/ipu_pm/ipu_pm.h"
+#else
+#include "../../../drivers/dsp/syslink_old/ipu_pm/ipu_pm.h"
+#endif
 
 #define IPU_PM_IOC_MAGIC		(0xDB)
 
