@@ -216,7 +216,7 @@ static void __mbox_rx_interrupt(struct omap_mbox *mbox)
 		if (msg_rx)
 			ack_mbox_irq(mbox_curr, IRQ_RX);
 nomem:
-		queue_work(mboxd, &mbox->rxq->work);
+		schedule_work(&mbox->rxq->work);
 		i++;
 	}
 }
@@ -328,7 +328,7 @@ static void omap_mbox_fini(struct omap_mbox *mbox)
 	if (!--mbox->use_count) {
 		free_irq(mbox->irq, mbox);
 		tasklet_kill(&mbox->txq->tasklet);
-	flush_work_sync(&mbox->rxq->work);
+		flush_work_sync(&mbox->rxq->work);
 		mbox_queue_free(mbox->txq);
 		mbox_queue_free(mbox->rxq);
 	}
