@@ -1,12 +1,12 @@
 config HAVE_TI_TILER
         bool
+        depends on ARCH_OMAP4 && !OMAP4_USE_OLD_API_VIDEO
         default y
-        depends on ARCH_OMAP4
 
 menuconfig TI_TILER
 	tristate "TI TILER support"
+        depends on HAVE_TI_TILER && !OMAP4_USE_OLD_API_VIDEO
 	default y
-        depends on HAVE_TI_TILER
 	help
            TILER and TILER-DMM driver for TI chips.  The TI TILER device
            enables video rotation on certain TI chips such as OMAP4 or

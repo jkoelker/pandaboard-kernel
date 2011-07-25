@@ -30,6 +30,10 @@ obj-$(CONFIG_OMAP_DEBUG_LEDS) += debug-leds.o
 i2c-omap-$(CONFIG_I2C_OMAP) := i2c.o
 obj-y += $(i2c-omap-m) $(i2c-omap-y)
 
+ifdef CONFIG_OMAP4_USE_OLD_API_VIDEO
+obj-y += hdmi_lib.o
+endif
+
 # OMAP mailbox framework
 obj-$(CONFIG_OMAP_MBOX_FWK) += mailbox.o
 obj-$(CONFIG_OMAP_REMOTE_PROC) += remoteproc.o

@@ -1,6 +1,6 @@
 config VIDEO_OMAP2_VOUT
 	tristate "OMAP2/OMAP3 V4L2-Display driver"
-	depends on ARCH_OMAP2 || ARCH_OMAP3
+	depends on (ARCH_OMAP2 || ARCH_OMAP3) && !OMAP4_USE_OLD_API_VIDEO
 	select VIDEOBUF_GEN
 	select VIDEOBUF_DMA_CONTIG
 	select OMAP2_DSS

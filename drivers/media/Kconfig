@@ -117,5 +117,11 @@ source "drivers/media/dvb/Kconfig"
 endif # MEDIA_SUPPORT
 
 if MEDIA_SUPPORT || FB
+if OMAP4_USE_OLD_API_VIDEO
+	source "drivers/media/video/tiler_old/Kconfig"
+	source "drivers/media/video/dmm_old/Kconfig"
+endif
+if !OMAP4_USE_OLD_API_VIDEO
 	source "drivers/media/video/tiler/Kconfig"
+endif
 endif

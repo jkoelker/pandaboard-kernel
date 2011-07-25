@@ -4,6 +4,7 @@ menu "OMAP2/3 Display Device Drivers"
 config PANEL_GENERIC_DPI
         tristate "Generic DPI Panel"
 	depends on OMAP2_DSS_DPI
+	default n if OMAP4_USE_OLD_API_VIDEO
         help
 	  Generic DPI panel driver.
 	  Supports DVI output for Beagle and OMAP3 SDP.

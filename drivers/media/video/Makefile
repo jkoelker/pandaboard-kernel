@@ -181,10 +181,14 @@ obj-$(CONFIG_VIDEO_SAA7164)     += saa7164/
 obj-$(CONFIG_VIDEO_IR_I2C)  += ir-kbd-i2c.o
 
 obj-y	+= davinci/
-obj-$(CONFIG_TI_TILER)  += tiler/
 
+ifndef CONFIG_OMAP4_USE_OLD_API_VIDEO
+obj-$(CONFIG_TI_TILER)  += tiler/
 obj-$(CONFIG_ARCH_OMAP)	+= omap/
 obj-$(CONFIG_VIDEO_OMAP_GFX) += omapgfx/
+else
+obj-$(CONFIG_ARCH_OMAP)	+= omap_old/ tiler_old/ dmm_old/
+endif
 
 EXTRA_CFLAGS += -Idrivers/media/dvb/dvb-core
 EXTRA_CFLAGS += -Idrivers/media/dvb/frontends

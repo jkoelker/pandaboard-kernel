@@ -571,7 +571,13 @@ config VIDEO_VIVI
 
 source "drivers/media/video/davinci/Kconfig"
 
+if !OMAP4_USE_OLD_API_VIDEO
 source "drivers/media/video/omap/Kconfig"
+endif
+
+if OMAP4_USE_OLD_API_VIDEO
+source "drivers/media/video/omap_old/Kconfig"
+endif
 
 source "drivers/media/video/omapgfx/Kconfig"
 

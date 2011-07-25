@@ -123,6 +123,8 @@ obj-y				+= ieee802154/
 obj-y				+= clk/
 
 obj-$(CONFIG_HWSPINLOCK)	+= hwspinlock/
+
+ifndef CONFIG_OMAP4_USE_OLD_API_VIDEO
 obj-$(CONFIG_SYSLINK_DUCATI_PM) += dsp/syslink/multicore_ipc/
 obj-$(CONFIG_MPU_SYSLINK_PLATFORM)   += dsp/syslink/multicore_ipc/
 obj-$(CONFIG_MPU_SYSLINK_IPC)   += dsp/syslink/multicore_ipc/
@@ -130,5 +132,14 @@ obj-$(CONFIG_SYSLINK_PROC)      += dsp/syslink/procmgr/
 obj-$(CONFIG_SYSLINK_PROC4430)  += dsp/syslink/procmgr/proc4430/
 obj-$(CONFIG_OMAP_DEVICE_HANDLER)	+= dsp/syslink/devh/
 obj-$(CONFIG_OMAP_DEVICE_HANDLER)	+= dsp/syslink/devh/44xx/
+else
+obj-$(CONFIG_SYSLINK_DUCATI_PM) += dsp/syslink_old/multicore_ipc/
+obj-$(CONFIG_MPU_SYSLINK_PLATFORM)   += dsp/syslink_old/multicore_ipc/
+obj-$(CONFIG_MPU_SYSLINK_IPC)   += dsp/syslink_old/multicore_ipc/
+obj-$(CONFIG_SYSLINK_PROC)      += dsp/syslink_old/procmgr/
+obj-$(CONFIG_SYSLINK_PROC4430)  += dsp/syslink_old/procmgr/proc4430/
+obj-$(CONFIG_OMAP_DEVICE_HANDLER)	+= dsp/syslink_old/devh/
+obj-$(CONFIG_OMAP_DEVICE_HANDLER)	+= dsp/syslink_old/devh/44xx/
+endif
+
 obj-$(CONFIG_DMM_OMAP)		+= media/
-obj-$(CONFIG_TILER_OMAP)		+= media/

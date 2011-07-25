@@ -2,7 +2,7 @@
 
 menuconfig Sys_Link
 	bool "Sys_Link"
-	depends on ARCH_OMAP4
+	depends on ARCH_OMAP4 && !OMAP4_USE_OLD_API_VIDEO
 	default y
 
 if Sys_Link

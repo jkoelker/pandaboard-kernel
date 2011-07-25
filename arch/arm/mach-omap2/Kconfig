@@ -52,6 +52,11 @@ config ARCH_OMAP4
 	select PM_OPP if PM
 	select USB_ARCH_HAS_EHCI
 
+config OMAP4_USE_OLD_API_VIDEO
+	bool "Use .35 based video framework for acc video"
+	default n
+	depends on ARCH_OMAP4
+
 comment "OMAP Core Type"
 	depends on ARCH_OMAP2
 
