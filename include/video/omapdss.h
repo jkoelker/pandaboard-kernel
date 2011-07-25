@@ -487,7 +487,6 @@ struct omap_overlay_info {
 	u8 pre_mult_alpha;
 	u16 min_x_decim, max_x_decim, min_y_decim, max_y_decim;
 	enum omap_overlay_zorder zorder;
-	u32 p_uv_addr;	/* for NV12 format */
 	enum device_n_buffer_type field;
 	u16 pic_height;	/* required for interlacing with cropping */
 	bool out_wb; /* true when this overlay only feeds wb pipeline */

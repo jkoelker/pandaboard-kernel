@@ -61,6 +61,9 @@ static void dss_clk_disable_all_no_ctx(void);
 static void dss_clk_enable_no_ctx(enum dss_clock clks);
 static void dss_clk_disable_no_ctx(enum dss_clock clks);
 
+int omap_dss_register_device(struct omap_dss_device *dssdev);
+void omap_dss_unregister_device(struct omap_dss_device *dssdev);
+
 static char *def_disp_name;
 module_param_named(def_disp, def_disp_name, charp, 0);
 MODULE_PARM_DESC(def_disp_name, "default display name");

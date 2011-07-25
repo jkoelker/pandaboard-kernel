@@ -904,24 +904,6 @@ void omap_device_register_dvfs_callbacks(struct device *dev,
 	od->get_rate = get_rate;
 }
 
-int omap_device_set_rate(struct device *dev, unsigned long freq)
-{
-        struct platform_device *pdev;
-        struct omap_device *od;
-
-        pdev = container_of(dev, struct platform_device, dev);
-        od = _find_by_pdev(pdev);
-
-        if (!od->set_rate) {
-                dev_err(dev, "%s: No set_rate API for scaling device\n",
-                        __func__);
-                return -ENODATA;
-        }
-
-        return od->set_rate(dev, freq);
-}
-EXPORT_SYMBOL_GPL(omap_device_set_rate)
-
 struct device omap_device_parent = {
 	.init_name	= "omap",
 	.parent         = &platform_bus,
