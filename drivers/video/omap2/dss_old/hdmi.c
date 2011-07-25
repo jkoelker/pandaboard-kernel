@@ -1535,7 +1535,7 @@ static irqreturn_t hdmi_irq_handler(int irq, void *arg)
 	spin_unlock_irqrestore(&irqstatus_lock, flags);
 
 	if (r && !work_pending) {
-		work = kmalloc(sizeof(struct work_struct), GFP_KERNEL);
+		work = kmalloc(sizeof(struct work_struct), GFP_ATOMIC);
 
 		if (work) {
 			INIT_WORK(work, hdmi_work_queue);
