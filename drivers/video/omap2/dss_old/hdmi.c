@@ -61,6 +61,10 @@
 #include "dss.h"
 #include <plat/edid.h>
 
+#ifdef CONFIG_OMAP2_DSS_DEBUG_SUPPORT
+extern unsigned int dss_debug;
+#endif
+
 static int hdmi_enable_display(struct omap_dss_device *dssdev);
 static void hdmi_disable_display(struct omap_dss_device *dssdev);
 static int hdmi_display_suspend(struct omap_dss_device *dssdev);
@@ -485,7 +489,7 @@ struct hdmi_pll_info {
 
 static inline void print_omap_video_timings(struct omap_video_timings *timings)
 {
-	extern unsigned int dss_debug;
+#ifdef CONFIG_OMAP2_DSS_DEBUG_SUPPORT
 	if (dss_debug) {
 		printk(KERN_INFO "Timing Info:\n");
 		printk(KERN_INFO "  pixel_clk = %d\n", timings->pixel_clock);
@@ -498,6 +502,7 @@ static inline void print_omap_video_timings(struct omap_video_timings *timings)
 		printk(KERN_INFO "  vsw       = %d\n", timings->vsw);
 		printk(KERN_INFO "  vbp       = %d\n", timings->vbp);
 	}
+#endif
 }
 
 static void compute_pll(int clkin, int phy,
@@ -1890,6 +1895,7 @@ static int hdmi_get_edid(struct omap_dss_device *dssdev,  u8 *buf, int len)
 			count * EDID_TIMING_DESCRIPTOR_SIZE;
 			printk("Extension 0 Block %d", count);
 			get_edid_timing_info(&edid_st->DTD[count], &timings);
+#ifdef CONFIG_OMAP2_DSS_DEBUG_SUPPORT
 			if (!dss_debug) {
 				dss_debug = 1;
 				mark = 1;
@@ -1897,6 +1903,7 @@ static int hdmi_get_edid(struct omap_dss_device *dssdev,  u8 *buf, int len)
 			print_omap_video_timings(&timings);
 			if (mark)
 				dss_debug = 0;
+#endif
 		}
 	if (edid[0x7e] != 0x00) {
 		offset = edid[EDID_DESCRIPTOR_BLOCK1_ADDRESS + 2];
@@ -1913,6 +1920,7 @@ static int hdmi_get_edid(struct omap_dss_device *dssdev,  u8 *buf, int len)
 			printk("Extension 1 Block %d", count);
 			get_eedid_timing_info(current_descriptor_addrs, edid ,
 			&timings);
+#ifdef CONFIG_OMAP2_DSS_DEBUG_SUPPORT
 			if (!dss_debug) {
 				dss_debug = 1;
 				mark = 1;
@@ -1920,7 +1928,9 @@ static int hdmi_get_edid(struct omap_dss_device *dssdev,  u8 *buf, int len)
 			print_omap_video_timings(&timings);
 			if (mark)
 				dss_debug = 0;
+#endif
 			}
+
 		}
 	}
 	hdmi_get_image_format(edid, img_format);
