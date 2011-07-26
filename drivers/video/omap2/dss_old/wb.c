@@ -239,7 +239,7 @@ void dss_init_writeback(struct platform_device *pdev)
 	omap_dss_add_wb(wb);
 
 	r = kobject_init_and_add(&wb->kobj, &writeback_ktype,
-		&pdev->dev.kobj, "writeback", 0);
+		&pdev->dev.kobj, "writeback");
 
 	if (r)
 		DSSERR("failed to create sysfs file\n");
