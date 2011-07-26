@@ -66,6 +66,8 @@
 #include <plat/ipu_dev.h>
 #include "../../../../arch/arm/mach-omap2/cm.h"
 #include "../../../../arch/arm/mach-omap2/prcm-common.h"
+#include "../../../../arch/arm/mach-omap2/cm2_44xx.h"
+#include "../../../../arch/arm/mach-omap2/cm2xxx_3xxx.h"
 #include "ipu_pm.h"
 
 /** ============================================================================
