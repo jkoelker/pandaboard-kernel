@@ -500,7 +500,16 @@ EXPORT_SYMBOL(omap_abe_enable_gain);
 int omap_abe_mute_gain(struct omap_abe *abe, u32 id, u32 p)
 {
 	u32 mixer_offset, f_g, ramp;
+
+	if (!abe)
+		return -EINVAL;
+
 	omap_abe_gain_offset(abe, id, &mixer_offset);
+	if (mixer_offset + p >= ARRAY_SIZE(abe->desired_ramp_delay_ms)) {
+		pr_err("omap_abe_mute_gain mixer_offset=%d p=%d too large\n",
+							      mixer_offset, p);
+		return -EINVAL;
+	}
 	/* save the input parameters for mute/unmute */
 	ramp = abe->desired_ramp_delay_ms[mixer_offset + p];
 	f_g = GAIN_MUTE;
@@ -524,7 +533,18 @@ EXPORT_SYMBOL(omap_abe_mute_gain);
 int omap_abe_unmute_gain(struct omap_abe *abe, u32 id, u32 p)
 {
 	u32 mixer_offset, f_g, ramp;
+
+	if (!abe)
+		return -EINVAL;
+
 	omap_abe_gain_offset(abe, id, &mixer_offset);
+
+        if (mixer_offset + p >= ARRAY_SIZE(abe->desired_ramp_delay_ms)) {       
+                pr_err("omap_abe_unmute_gain mixer_offset=%d p=%d too large\n",   
+                                                              mixer_offset, p); 
+                return -EINVAL;                                                 
+        }  
+
 	if ((abe->muted_gains_indicator[mixer_offset + p] &
 	    OMAP_ABE_GAIN_MUTED)) {
 		/* restore the input parameters for mute/unmute */
