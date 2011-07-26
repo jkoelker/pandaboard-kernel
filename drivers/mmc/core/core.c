@@ -589,7 +589,7 @@ int mmc_host_lazy_disable(struct mmc_host *host)
 	if (!host->enabled)
 		return 0;
 
-	if (host->disable_delay) {
+	if (!host->rescan_disable && host->disable_delay) {
 		mmc_schedule_delayed_work(&host->disable,
 				msecs_to_jiffies(host->disable_delay));
 		return 0;
