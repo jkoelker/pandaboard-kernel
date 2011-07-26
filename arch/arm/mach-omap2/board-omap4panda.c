@@ -53,6 +53,9 @@
 #include "mux.h"
 #include "common-board-devices.h"
 
+/* this is fixed post-3.0 */
+#include <sound/tpa6130a2-plat.h>
+
 #define GPIO_HUB_POWER		1
 #define GPIO_HUB_NRESET		62
 #define GPIO_WIFI_PMENA		43
