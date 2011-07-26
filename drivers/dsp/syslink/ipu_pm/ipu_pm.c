@@ -65,6 +65,7 @@
 /* Module headers */
 #include <plat/ipu_dev.h>
 #include "../../../../arch/arm/mach-omap2/cm.h"
+#include "../../../../arch/arm/mach-omap2/prcm-common.h"
 #include "ipu_pm.h"
 
 /** ============================================================================
